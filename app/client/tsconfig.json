@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
     "jsx": "react",
+    "strict": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "baseUrl": "./src",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "strict": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,

@@ -1,11 +1,13 @@
 {
   "name": "react-app",
   "version": "0.0.1",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "yarn watch:css && webpack serve --config webpack.dev.config.ts",
     "build": "yarn build:css && webpack --config webpack.prod.config.ts",
     "build:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
+    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css",
+    "lint": "eslint src/**/*.{ts,tsx} --quiet"
   },
   "dependencies": {
     "react": "^17.0.2",

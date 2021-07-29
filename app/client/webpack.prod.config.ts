@@ -48,6 +48,7 @@ const config: webpack.Configuration = {
       async: false,
     }),
     new ESLintPlugin({
+      failOnError: true,
       extensions: ['js', 'jsx', 'ts', 'tsx'],
     }),
     new CleanWebpackPlugin(),
