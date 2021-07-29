@@ -42,7 +42,7 @@ const config: webpack.Configuration = {
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'src/public/index.html',
     }),
     new ForkTsCheckerWebpackPlugin({
       async: false,

@@ -44,7 +44,7 @@ const config: Configuration = {
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].[contenthash].css' }),
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
+      template: 'src/public/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
     new ForkTsCheckerWebpackPlugin({

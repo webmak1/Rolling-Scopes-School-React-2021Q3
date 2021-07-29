@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ImageSearch = () => {
+export const ImageSearch: React.FC = () => {
   return (
     <div className="max-w-sm mx-auto my-10 overflow-hidden rounded">
       <form className="w-full max-w-sm">

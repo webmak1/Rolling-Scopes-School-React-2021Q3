@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ImageCard = () => {
+export const ImageCard: React.FC = () => {
   return (
     <div className="max-w-sm mt-10 overflow-hidden rounded shadow-lg">
       <img className="w-full" src="https://source.unsplash.com/random" alt="" />
