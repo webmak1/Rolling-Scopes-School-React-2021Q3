@@ -1,5 +1,11 @@
 # [Rolling Scopes School] React 2021Q3
 
+**Result:**
+
+<br/>
+
+![Application](/img/pic01.png?raw=true)
+
 <br/>
 
 ### [React. Components](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/react/react-components.md)
@@ -85,5 +91,23 @@
     $ yarn build
 
 <br/>
+
+### TailwindCSS
+
+    $ yarn add -D tailwindcss postcss-cli autoprefixer
+
+    $ npx tailwind init tailwind.js --full
+
+    $ touch postcss.config.js
+
+<br/>
+
+### WebPack for TailwindCSS
+
+    $ yarn add -D css-loader
+
+    $ yarn add -D mini-css-extract-plugin @types/mini-css-extract-plugin
+
+### Materials
 
 https://www.carlrippon.com/creating-react-app-with-typescript-eslint-with-webpack5/
