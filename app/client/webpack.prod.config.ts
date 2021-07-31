@@ -53,6 +53,7 @@ const config: webpack.Configuration = {
     }),
     new CleanWebpackPlugin(),
   ],
+  devtool: 'inline-source-map',
 };
 
 export default config;
