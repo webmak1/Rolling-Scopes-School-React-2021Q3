@@ -197,7 +197,7 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                       <div className="mt-4 space-y-4">
                         <div>
                           {checkboxes.map((item) => (
-                            <div className="flex items-start">
+                            <div key={item.key} className="flex items-start">
                               <div className="flex items-center h-5">
                                 <input
                                   id={item.name}

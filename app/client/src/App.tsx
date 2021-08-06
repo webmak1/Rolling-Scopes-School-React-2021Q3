@@ -7,7 +7,7 @@ export interface IFormData {
   lastName?: string;
   birthDate?: string;
   country?: string;
-  checkedLanguages?: {};
+  checkedLanguages?: Record<string, boolean>;
   checkedRadio?: string;
 }
 
