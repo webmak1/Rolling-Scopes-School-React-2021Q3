@@ -5,6 +5,9 @@ import { Form } from './components/Form';
 export interface IFormData {
   firstName?: string;
   lastName?: string;
+  birthDate?: string;
+  country?: string;
+  checkedLanguages?: {};
 }
 
 export const App: React.FC = () => {
@@ -18,6 +21,8 @@ export const App: React.FC = () => {
       lastName: 'string2',
     },
   ]);
+
+  console.log('formData', formData);
 
   return (
     <>

@@ -9,12 +9,40 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
+  const [country, setCountryDate] = useState('');
+
+  const [checkedLanguages, setCheckedLanguages] = useState({
+    react: false,
+    angular: false,
+    vue: false,
+  });
 
   const [errors, setErrors] = useState({});
 
+  const checkboxes = [
+    {
+      name: 'react',
+      key: 'react',
+      label: 'React',
+    },
+    {
+      name: 'angular',
+      key: 'angular',
+      label: 'Angular',
+    },
+    {
+      name: 'vue',
+      key: 'vue',
+      label: 'Vue',
+    },
+  ];
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    setFormData((state) => [...state, { lastName, firstName }]);
+    setFormData((state) => [
+      ...state,
+      { lastName, firstName, birthDate, country, checkedLanguages },
+    ]);
 
     // setFormValues(() => [{ firstName, lastName }]);
     // setFormData((state) => [...state, { firstName, lastName }]);
@@ -22,6 +50,14 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
     //   setFormValues((state) => [...state, { firstName, lastName }]);
     //   reset();
     // }
+  };
+
+  const handleChangeLanguages = (event) => {
+    setCheckedLanguages({
+      ...checkedLanguages,
+      [event.target.name]: event.target.checked,
+    });
+    // console.log('checkedItems: ', checkedLanguages);
   };
 
   const reset = () => {
@@ -91,7 +127,7 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                         name="last-name"
                         id="last-name"
                         value={birthDate}
-                        onChange={(event) => setLastName(event.target.value)}
+                        onChange={(event) => setBirthDate(event.target.value)}
                         autoComplete="family-name"
                         className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       />
@@ -107,6 +143,8 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                       <select
                         id="country"
                         name="country"
+                        value={country}
+                        onChange={(event) => setCountryDate(event.target.value)}
                         autoComplete="country"
                         className="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
@@ -124,70 +162,33 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                         You can select multiple choices
                       </p>
                       <div className="mt-4 space-y-4">
-                        <div className="flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="comments"
-                              name="comments"
-                              type="checkbox"
-                              className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor="comments"
-                              className="font-medium text-gray-700"
-                            >
-                              React
-                            </label>
-                            <p className="text-gray-500">
-                              Get notified when someones posts a comment on a
-                              posting.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="candidates"
-                              name="candidates"
-                              type="checkbox"
-                              className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor="candidates"
-                              className="font-medium text-gray-700"
-                            >
-                              Angular
-                            </label>
-                            <p className="text-gray-500">
-                              Get notified when a candidate applies for a job.
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-start">
-                          <div className="flex items-center h-5">
-                            <input
-                              id="offers"
-                              name="offers"
-                              type="checkbox"
-                              className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
-                            />
-                          </div>
-                          <div className="ml-3 text-sm">
-                            <label
-                              htmlFor="offers"
-                              className="font-medium text-gray-700"
-                            >
-                              Vue
-                            </label>
-                            <p className="text-gray-500">
-                              Get notified when a candidate accepts or rejects
-                              an offer.
-                            </p>
-                          </div>
+                        <div>
+                          {checkboxes.map((item) => (
+                            <div className="flex items-start">
+                              <div className="flex items-center h-5">
+                                <input
+                                  id={item.name}
+                                  name={item.name}
+                                  checked={checkedLanguages[item.name]}
+                                  onChange={handleChangeLanguages}
+                                  type="checkbox"
+                                  className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
+                                />
+                              </div>
+                              <div className="ml-3 text-sm">
+                                <label
+                                  htmlFor="comments"
+                                  className="font-medium text-gray-700"
+                                >
+                                  {item.label}
+                                </label>
+                                <p className="text-gray-500">
+                                  You agree to pass onine tests to check your
+                                  skills.
+                                </p>
+                              </div>
+                            </div>
+                          ))}
                         </div>
                       </div>
                     </div>
