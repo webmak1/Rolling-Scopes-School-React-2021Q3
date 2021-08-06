@@ -8,19 +8,11 @@ export interface IFormData {
   birthDate?: string;
   country?: string;
   checkedLanguages?: {};
+  checkedRadio?: string;
 }
 
 export const App: React.FC = () => {
-  const [formData, setFormData] = useState<IFormData[]>([
-    {
-      firstName: 'Marley1',
-      lastName: 'string1',
-    },
-    {
-      firstName: 'Marley2',
-      lastName: 'string2',
-    },
-  ]);
+  const [formData, setFormData] = useState<IFormData[]>([]);
 
   console.log('formData', formData);
 

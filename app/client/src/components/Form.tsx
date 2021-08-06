@@ -17,6 +17,8 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
     vue: false,
   });
 
+  const [checkedRadio, setCheckedRadio] = useState('');
+
   const [errors, setErrors] = useState({});
 
   const checkboxes = [
@@ -41,7 +43,14 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
     event.preventDefault();
     setFormData((state) => [
       ...state,
-      { lastName, firstName, birthDate, country, checkedLanguages },
+      {
+        lastName,
+        firstName,
+        birthDate,
+        country,
+        checkedLanguages,
+        checkedRadio,
+      },
     ]);
 
     // setFormValues(() => [{ firstName, lastName }]);
@@ -58,6 +67,11 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
       [event.target.name]: event.target.checked,
     });
     // console.log('checkedItems: ', checkedLanguages);
+  };
+
+  const handleChangeRadio = (event) => {
+    const { name, value } = event.target;
+    setCheckedRadio(value);
   };
 
   const reset = () => {
@@ -205,9 +219,11 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                       <div className="mt-4 space-y-4">
                         <div className="flex items-center">
                           <input
-                            id="push-everything"
-                            name="push-notifications"
+                            id="radio-yes"
+                            name="ready-to-relocate"
                             type="radio"
+                            value="yes"
+                            onChange={handleChangeRadio}
                             className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                           />
                           <label
@@ -219,9 +235,11 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                         </div>
                         <div className="flex items-center">
                           <input
-                            id="push-email"
-                            name="push-notifications"
+                            id="radio-no"
+                            name="ready-to-relocate"
                             type="radio"
+                            value="no"
+                            onChange={handleChangeRadio}
                             className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                           />
                           <label
@@ -233,9 +251,11 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                         </div>
                         <div className="flex items-center">
                           <input
-                            id="push-nothing"
-                            name="push-notifications"
+                            id="radio-maybe"
+                            name="ready-to-relocate"
                             type="radio"
+                            value="May be later"
+                            onChange={handleChangeRadio}
                             className="w-4 h-4 text-indigo-600 border-gray-300 focus:ring-indigo-500"
                           />
                           <label
@@ -261,12 +281,6 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
               </div>
             </form>
           </div>
-        </div>
-      </div>
-
-      <div className="hidden sm:block" aria-hidden="true">
-        <div className="py-5">
-          <div className="border-t border-gray-200" />
         </div>
       </div>
     </>
