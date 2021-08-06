@@ -1,20 +1,32 @@
-import React from 'react';
-import { ImageCard } from './components/ImageCard';
-import { ImageSearch } from './components/ImageSearch';
+import React, { useState } from 'react';
+import { CardItem } from './components/CardItem';
+import { Form } from './components/Form';
 
-const images = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+export interface IFormData {
+  firstName?: string;
+  lastName?: string;
+}
 
 export const App: React.FC = () => {
+  const [formData, setFormData] = useState<IFormData[]>([
+    {
+      firstName: 'Marley1',
+      lastName: 'string1',
+    },
+    {
+      firstName: 'Marley2',
+      lastName: 'string2',
+    },
+  ]);
+
   return (
     <>
-      <ImageSearch />
-      <div className="container mx-auto">
-        <div className="grid grid-cols-3 gap-4">
-          {images.map((index) => (
-            <ImageCard key={index} />
-          ))}
-        </div>
-      </div>
+      <Form setFormData={setFormData} />
+      <main>
+        {formData.map((item, idx) => {
+          return <CardItem item={item} key={idx} />;
+        })}
+      </main>
     </>
   );
 };

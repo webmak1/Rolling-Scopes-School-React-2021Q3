@@ -13,7 +13,7 @@
     "plugin:react-hooks/recommended"
   ],
   "rules": {
-    "no-console": "error",
+    "no-console": "warn",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/prop-types": "off"

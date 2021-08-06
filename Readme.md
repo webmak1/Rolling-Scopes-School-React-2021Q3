@@ -4,7 +4,7 @@
 
 <br/>
 
-![Application](/img/pic01.png?raw=true)
+![Application](/img/pic02.png?raw=true)
 
 <br/>
 

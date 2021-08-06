@@ -1,0 +1,18 @@
+import { IFormData } from 'App';
+import React from 'react';
+
+interface IItemProps {
+  item: IFormData;
+  key: number;
+}
+
+export const CardItem: React.FC<IItemProps> = ({ item, key }) => {
+  // console.log('item', item);
+  // console.log('key', key);
+
+  return (
+    <div>
+      <h1>ABCD</h1>
+    </div>
+  );
+};
