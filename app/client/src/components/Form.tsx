@@ -9,7 +9,7 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [birthDate, setBirthDate] = useState('');
-  const [country, setCountryDate] = useState('');
+  const [country, setCountry] = useState('Russia');
 
   const [checkedLanguages, setCheckedLanguages] = useState({
     react: false,
@@ -19,7 +19,21 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
 
   const [checkedRadio, setCheckedRadio] = useState('');
 
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState(
+    'Fields First Name, Last Name, Birth Date are required!'
+  );
+
+  const validate = () => {
+    setErrors('');
+
+    if (!firstName) {
+      setErrors('Field First Name is Not Set');
+    } else if (!lastName) {
+      setErrors('Field Last Name is Not Set');
+    } else if (!birthDate) {
+      setErrors('Field Birth Date is Not Set');
+    }
+  };
 
   const checkboxes = [
     {
@@ -41,24 +55,21 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
-    setFormData((state) => [
-      ...state,
-      {
-        lastName,
-        firstName,
-        birthDate,
-        country,
-        checkedLanguages,
-        checkedRadio,
-      },
-    ]);
-
-    // setFormValues(() => [{ firstName, lastName }]);
-    // setFormData((state) => [...state, { firstName, lastName }]);
-    // if (Object.keys(errors).length === 0) {
-    //   setFormValues((state) => [...state, { firstName, lastName }]);
-    //   reset();
-    // }
+    validate();
+    if (!errors) {
+      setFormData((state) => [
+        ...state,
+        {
+          lastName,
+          firstName,
+          birthDate,
+          country,
+          checkedLanguages,
+          checkedRadio,
+        },
+      ]);
+      reset();
+    }
   };
 
   const handleChangeLanguages = (event) => {
@@ -66,16 +77,24 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
       ...checkedLanguages,
       [event.target.name]: event.target.checked,
     });
-    // console.log('checkedItems: ', checkedLanguages);
   };
 
   const handleChangeRadio = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     setCheckedRadio(value);
   };
 
   const reset = () => {
     setFirstName('');
+    setLastName('');
+    setBirthDate('');
+    setCountry('Russia');
+    setCheckedLanguages({
+      react: false,
+      angular: false,
+      vue: false,
+    });
+    setCheckedRadio('');
   };
 
   return (
@@ -158,7 +177,7 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                         id="country"
                         name="country"
                         value={country}
-                        onChange={(event) => setCountryDate(event.target.value)}
+                        onChange={(event) => setCountry(event.target.value)}
                         autoComplete="country"
                         className="block w-full px-3 py-2 mt-1 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
@@ -269,6 +288,12 @@ export const Form: React.FC<IFormProps> = ({ setFormData }) => {
                     </div>
                   </div>
                 </div>
+
+                {errors && (
+                  <div className="px-4 py-3 text-center text-white bg-red-500 sm:px-6">
+                    {errors}
+                  </div>
+                )}
 
                 <div className="px-4 py-3 text-right bg-gray-50 sm:px-6">
                   <button

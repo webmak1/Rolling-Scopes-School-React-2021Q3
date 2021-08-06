@@ -13,9 +13,6 @@ export interface IFormData {
 
 export const App: React.FC = () => {
   const [formData, setFormData] = useState<IFormData[]>([]);
-
-  console.log('formData', formData);
-
   return (
     <>
       <Form setFormData={setFormData} />
