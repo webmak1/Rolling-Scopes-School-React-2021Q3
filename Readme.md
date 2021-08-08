@@ -4,7 +4,11 @@
 
 <br/>
 
-![Application](/img/pic02.png?raw=true)
+![Application](/img/task02-pic01.png?raw=true)
+
+<br/>
+
+![Application](/img/task02-pic02.png?raw=true)
 
 <br/>
 
