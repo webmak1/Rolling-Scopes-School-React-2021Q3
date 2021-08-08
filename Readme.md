@@ -1,4 +1,4 @@
-# [Rolling Scopes School] React 2021Q3
+# [Rolling Scopes School] React 2021Q3 - React. API
 
 **Result:**
 
@@ -12,4 +12,4 @@
 
 <br/>
 
-### [React. Forms](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/react/react-forms.md)
+### [React. API](https://github.com/rolling-scopes-school/tasks/blob/master/tasks/react/react-api.md)

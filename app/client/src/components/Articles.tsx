@@ -1,18 +1,10 @@
-import { IFormData } from 'App';
+import { IArticle } from 'interfaces';
 import React from 'react';
 
-interface IItemProps {
-  item: IFormData;
-  key: number;
-}
-
-export const CardItem: React.FC<IItemProps> = ({ item, key }) => {
-  const checkedLanguages = item.checkedLanguages;
-  const checkedRadio = item.checkedRadio;
-
+export const Articles: React.FC<{ articles: IArticle[] }> = ({ articles }) => {
   return (
     <>
-      <div key={key} className="hidden sm:block" aria-hidden="true">
+      <div className="hidden sm:block" aria-hidden="true">
         <div className="py-5">
           <div className="border-t border-gray-200" />
         </div>
@@ -36,7 +28,7 @@ export const CardItem: React.FC<IItemProps> = ({ item, key }) => {
                       type="text"
                       name="first-name"
                       id="first-name"
-                      value={item.firstName}
+                      value="XXXX"
                       autoComplete="given-name"
                       className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
@@ -54,7 +46,7 @@ export const CardItem: React.FC<IItemProps> = ({ item, key }) => {
                       type="text"
                       name="last-name"
                       id="last-name"
-                      value={item.lastName}
+                      value="XXXX"
                       autoComplete="family-name"
                       className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
@@ -72,45 +64,10 @@ export const CardItem: React.FC<IItemProps> = ({ item, key }) => {
                       type="date"
                       name="last-name"
                       id="last-name"
-                      value={item.birthDate}
+                      value="XXXX"
                       autoComplete="family-name"
                       className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                     />
-                  </div>
-
-                  <div className="col-span-6 sm:col-span-3">
-                    <label
-                      htmlFor="last-name"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Country / Region
-                    </label>
-                    <input
-                      readOnly
-                      type="text"
-                      name="country"
-                      id="country"
-                      value={item.country}
-                      autoComplete="family-name"
-                      className="block w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    />
-                  </div>
-
-                  <div className="col-span-6">
-                    <legend className="text-base font-medium text-gray-900">
-                      Languages:
-                      <ul>
-                        {checkedLanguages?.react && <li>* React</li>}
-                        {checkedLanguages?.angular && <li>* Angular</li>}
-                        {checkedLanguages?.vue && <li>* Vue</li>}
-                      </ul>
-                    </legend>
-                  </div>
-
-                  <div className="col-span-6">
-                    <legend className="text-base font-medium text-gray-900">
-                      Availability to Relocate: {checkedRadio}
-                    </legend>
                   </div>
                 </div>
               </div>
